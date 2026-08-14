@@ -16,7 +16,6 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  /* Giữ bố cục gọn gàng */
 }
 
 .chat-header {
@@ -29,12 +28,10 @@ body {
 
 .chat-body {
   flex: 1;
-  /* Chiếm toàn bộ không gian còn lại */
   display: flex;
   flex-direction: column;
   padding: 10px;
   overflow-y: auto;
-  /* Cho phép cuộn khi nội dung dài */
 }
 
 /* Tin nhắn chung */
@@ -46,22 +43,18 @@ body {
   word-wrap: break-word;
 }
 
-/* Tin nhắn người dùng (câu hỏi) — sang phải */
+/* Tin nhắn người dùng (câu hỏi)*/
 .user {
   background-color: #c8f7dc;
   margin-left: auto;
-  /* Đẩy toàn bộ ô sang phải */
   text-align: right;
-  /* Căn chữ sang phải */
 }
 
-/* Tin nhắn bot (câu trả lời) — sang trái */
+/* Tin nhắn bot (câu trả lời) */
 .bot {
   background-color: #f1f1f1;
   margin-right: auto;
-  /* Đẩy toàn bộ ô sang trái */
   text-align: left;
-  /* Căn chữ sang trái */
 }
 
 .chat-footer {
@@ -71,7 +64,6 @@ body {
   border-top: 1px solid #ddd;
   position: sticky;
   bottom: 0;
-  /* Giữ cố định ở dưới cùng */
 }
 
 .chat-footer input {
@@ -91,7 +83,7 @@ body {
   cursor: pointer;
 }
 
-/* 📱 Mobile (dưới 600px) */
+/* Mobile (dưới 600px) */
 @media (max-width: 600px) {
   .chat-container {
     width: 95%;
@@ -103,7 +95,7 @@ body {
   }
 }
 
-/* 📲 Tablet (601px - 1024px) */
+/* Tablet (601px - 1024px) */
 @media (min-width: 601px) and (max-width: 1024px) {
   .chat-container {
     width: 75%;
@@ -115,7 +107,7 @@ body {
   }
 }
 
-/* 💻 Desktop (trên 1025px) */
+/* Desktop (trên 1025px) */
 @media (min-width: 1025px) {
   .chat-container {
     width: 50%;
