@@ -1,0 +1,128 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #eef2f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.chat-container {
+  width: 400px;
+  height: 600px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* Giữ bố cục gọn gàng */
+}
+
+.chat-header {
+  background: #4364f7;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 1.5rem;
+}
+
+.chat-body {
+  flex: 1;
+  /* Chiếm toàn bộ không gian còn lại */
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  overflow-y: auto;
+  /* Cho phép cuộn khi nội dung dài */
+}
+
+/* Tin nhắn chung */
+.message {
+  margin: 8px 0;
+  padding: 10px 15px;
+  border-radius: 15px;
+  max-width: 70%;
+  word-wrap: break-word;
+}
+
+/* Tin nhắn người dùng (câu hỏi) — sang phải */
+.user {
+  background-color: #c8f7dc;
+  margin-left: auto;
+  /* Đẩy toàn bộ ô sang phải */
+  text-align: right;
+  /* Căn chữ sang phải */
+}
+
+/* Tin nhắn bot (câu trả lời) — sang trái */
+.bot {
+  background-color: #f1f1f1;
+  margin-right: auto;
+  /* Đẩy toàn bộ ô sang trái */
+  text-align: left;
+  /* Căn chữ sang trái */
+}
+
+.chat-footer {
+  display: flex;
+  padding: 10px;
+  background: #f9f9f9;
+  border-top: 1px solid #ddd;
+  position: sticky;
+  bottom: 0;
+  /* Giữ cố định ở dưới cùng */
+}
+
+.chat-footer input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+
+.chat-footer button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  background: #4364f7;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* 📱 Mobile (dưới 600px) */
+@media (max-width: 600px) {
+  .chat-container {
+    width: 95%;
+    height: 90vh;
+  }
+
+  .chat-header {
+    font-size: 1.2rem;
+  }
+}
+
+/* 📲 Tablet (601px - 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .chat-container {
+    width: 75%;
+    height: 85vh;
+  }
+
+  .chat-header {
+    font-size: 1.4rem;
+  }
+}
+
+/* 💻 Desktop (trên 1025px) */
+@media (min-width: 1025px) {
+  .chat-container {
+    width: 50%;
+    height: 80vh;
+  }
+
+  .chat-header {
+    font-size: 1.6rem;
+  }
+}

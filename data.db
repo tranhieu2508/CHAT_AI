@@ -1,0 +1,13 @@
+CREATE DATABASE chatdb;
+USE chatdb;
+
+CREATE TABLE qa (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    question VARCHAR(255),
+    answer TEXT
+);
+
+INSERT INTO qa (question, answer) VALUES
+("xin chào", "Chào bạn, tôi là Chat EPU."),
+("trường epu ở đâu", "Trường EPU nằm tại Hà Nội."),
+("ai sáng lập epu", "Trường EPU được sáng lập bởi Bộ GD&ĐT.");
