@@ -1,5 +1,6 @@
 async function sendMessage() {
-  const input = document.getElementById("userInput").value;
+  const input = document.getElementById("userInput").value.trim();
+  if (!input) return; // bỏ qua nếu trống
 
   document.querySelector(".chat-body").innerHTML +=
     `<div class="message user">${input}</div>`;
@@ -17,3 +18,10 @@ async function sendMessage() {
 
   document.getElementById("userInput").value = "";
 }
+
+// thêm sự kiện Enter
+document.getElementById("userInput").addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    sendMessage();
+  }
+});
