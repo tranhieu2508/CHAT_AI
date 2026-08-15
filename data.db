@@ -1,13 +1,39 @@
 CREATE DATABASE chatdb;
 USE chatdb;
 
-CREATE TABLE qa (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    question VARCHAR(255),
-    answer TEXT
+-- Bảng lưu nội quy chuẩn của Khoa
+CREATE TABLE KnowledgeBase (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    topic NVARCHAR(200),
+    question_variants NVARCHAR(MAX),
+    answer NVARCHAR(MAX),
+    status VARCHAR(20) DEFAULT 'ACTIVE'
 );
 
-INSERT INTO qa (question, answer) VALUES
-("xin chào", "Chào bạn, tôi là Chat EPU."),
-("trường epu ở đâu", "Trường EPU nằm tại Hà Nội."),
-("ai sáng lập epu", "Trường EPU được sáng lập bởi Bộ GD&ĐT.");
+-- Bảng lưu câu hỏi sinh viên hỏi mà Chatbot chưa biết
+CREATE TABLE Tickets (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    user_id NVARCHAR(50), -- Mã sinh viên
+    question NVARCHAR(MAX),
+    answer NVARCHAR(MAX) NULL,
+    status VARCHAR(20) DEFAULT 'PENDING',
+    created_at DATETIME DEFAULT GETDATE()
+);
+
+-- NẠP DỮ LIỆU NỘI QUY MẪU
+INSERT INTO KnowledgeBase (topic, question_variants, answer) VALUES
+(
+    N'Cấm thi do vắng mặt',
+    N'Vắng mấy buổi thì bị cấm thi? | Nghỉ bao nhiêu phần trăm số tiết bị điểm F? | Điểm danh thiếu có được đi thi không? | Vắng học bao nhiêu buổi thì không được thi?',
+    N'Theo quy chế: Sinh viên nghỉ học quá 20% tổng số tiết của học phần (Dù có lý do hay không có lý do) sẽ bị CẤM THI kết thúc học phần và nhận điểm 0 (điểm F).'
+),
+(
+    N'Điều kiện xét Học bổng',
+    N'Mấy điểm thì được học bổng Khuyến khích học tập? | Điều kiện học bổng KKHT? | Điểm rèn luyện bao nhiêu thì được học bổng? | Học bổng cần GPA bao nhiêu?',
+    N'Điều kiện xét học bổng KKHT: 1. ĐTB học tập (GPA) đạt từ 3.2/4.0 trở lên. 2. Điểm rèn luyện đạt từ 80 điểm (Loại Tốt) trở lên. 3. Không bị nợ môn hoặc kỷ luật trong học kỳ đó.'
+),
+(
+    N'Đăng ký học cải thiện',
+    N'Điểm C có được học cải thiện không? | Đăng ký học lại điểm nào? | Học cải thiện tính điểm như thế nào?',
+    N'Sinh viên được đăng ký học cải thiện đối với các học phần đạt điểm D, D+, C, C+. Sau khi học cải thiện, hệ thống sẽ tự động lấy điểm CAO NHẤT trong các lần học để tính GPA tích lũy.'
+);
